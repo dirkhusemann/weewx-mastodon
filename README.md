@@ -1,2 +1,2 @@
 # weewx-mastodon
-Mastodon reporter for whew
+Mastodon reporter for weewx
