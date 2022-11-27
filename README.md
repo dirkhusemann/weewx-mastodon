@@ -3,6 +3,11 @@
 `weewx-mastodon` is a [weewx](https://www.weewx.com) generator that reports weather reports to a mastodon account.
 It runs as report generator as part of the standard report generation process.
 
+## Prerequisites
+
+You need to have [Mastondon.py](https://github.com/halcy/Mastodon.py) installed. 
+Just follow the instructions on its [github page](https://github.com/halcy/Mastodon.py).
+
 ## Installation (zip)
 
 Download the latest release from [weewx-mastodon's github repository](https://github.com/dirkhusemann/weewx-mastodon).
