@@ -1,6 +1,6 @@
 # weewx-mastodon
 
-`weewx-mastodon` is a weewx generator that reports weather reports to a mastodon account.
+`weewx-mastodon` is a [weewx](https://www.weewx.com) generator that reports weather reports to a mastodon account.
 It runs as report generator as part of the standard report generation process.
 
 ## Installation (zip)

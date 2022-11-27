@@ -1,12 +1,20 @@
-Weather report for $station.location as of $current.dateTime
+Weather report for $station.location as of $current.dateTime.format("%Y-%m-%d %H:%M %Z")
 
-wind: $current.windSpeed $current.windDir.ordinal_compass
-wind gusts: $current.windGust $current.windGustDir.ordinal_compass
-barometer: $current.barometer ($day.barometer.min – $day.barometer.max, ∆ $trend.barometer)
-outdoor temperatur: $current.outTemp ($day.outTemp.min — $day.outTemp.max)
-outdoor humidity: $current.outHumidity humidity ($day.outHumidity.min – $day.outHumidity.max)
-wind chill factor: $current.windchill
-rain: $current.rainRate (max $day.rain.max ∑ $day.rain.sum)
+#if str($current.outTemp) == str($current.windchill)
+$current.outTemp, $current.outHumidity humidity
+#else 
+$current.outTemp (feels like $current.windchill), $current.outHumidity humidity
+#end if
+wind $current.windSpeed ($current.windSpeed.beaufort Bft) from $current.windDir.ordinal_compass
+wind gusts $current.windGust ($current.windGust.beaufort Bft) from $current.windGustDir.ordinal_compass
+
+barometer: $current.barometer, ∆ $trend.barometer
+rain rate: $current.rainRate, today $day.rain.sum
+
+min..max:
+- temperature: $day.outTemp.min .. $day.outTemp.max
+- humidity: $day.outHumidity.min .. $day.outHumidity.max
+- barometer: $day.barometer.min .. $day.barometer.max
 
 #if $almanac.hasExtras
 sunrise: $almanac.sun.rise.string()
@@ -16,5 +24,3 @@ moon is at $almanac.moon_fullness% — $almanac.moon_phase
 moonrise: $almanac.moon.rise
 moonset: $almanac.moon.set
 #end if
-
-indoors:  $current.inTemp, $current.inHumidity humidity

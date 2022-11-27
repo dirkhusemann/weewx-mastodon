@@ -24,7 +24,7 @@ def loader():
 class MastodonReporterInstaller(ExtensionInstaller):
     def __init__(self):
         super(MastodonReporterInstaller, self).__init__(
-            version='1.0.0',
+            version='1.0.1',
             name='mastodon',
             description='Skin for the mastodon reporter',
             author='Dirk Husemann',

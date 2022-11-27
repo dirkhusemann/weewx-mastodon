@@ -7,7 +7,6 @@ import time
 
 # WeeWX imports:
 import weeutil.config
-import weeutil.logger
 import weewx.defaults
 import weewx.manager
 import weewx.units
@@ -18,10 +17,10 @@ import mastodon
 
 log = logging.getLogger(__name__)
 
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 
-if weewx.__version__ < "3":
-    raise weewx.UnsupportedFeature("weewx 3 is required, found %s" %
+if weewx.__version__ < "4":
+    raise weewx.UnsupportedFeature("weewx 4 is required, found %s" %
                                    weewx.__version__)
 
 
@@ -32,7 +31,6 @@ class MastodonReporter(ReportGenerator):
     '''
 
     def run(self):
-        t1 = time.time()
         try:
             report_root = os.path.join(self.config_dict['WEEWX_ROOT'],
                                        self.skin_dict.get('HTML_ROOT'))
