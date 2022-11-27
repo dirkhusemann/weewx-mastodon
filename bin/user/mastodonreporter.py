@@ -31,6 +31,7 @@ class MastodonReporter(ReportGenerator):
     '''
 
     def run(self):
+        token = time.time()
         try:
             report_root = os.path.join(self.config_dict['WEEWX_ROOT'],
                                        self.skin_dict.get('HTML_ROOT'))
@@ -66,7 +67,7 @@ class MastodonReporter(ReportGenerator):
             try:
                 if not dry_run:
                     masto.status_post(status=toot_text,
-                                      idempotency_key=str(int(t1)))
+                                      idempotency_key=str(int(token)))
                 else:
                     log.info(f'dry_running: {toot_text}')
             except mastodon.MastodonUnauthorizedError as mue:
